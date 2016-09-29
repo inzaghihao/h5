@@ -3,7 +3,7 @@ var H5componentbase = function(name,cfg){
 	var cfg = cfg || {};
 	
 	var id = ( 'h5_c_'+Math.random() ).replace(".","_");
-	var cls = "h5_component_" + cfg.type + " h5_component_name" + name;
+	var cls = "h5_component_name_" + name + " h5_component_" + cfg.type;
 
 	var component = $("<div class='h5component "+cls+"' id='"+id+"'></div>");
 	cfg.text && component.text(cfg.text);
@@ -19,6 +19,18 @@ var H5componentbase = function(name,cfg){
 			marginLeft : (cfg.width/4*-1) + "px"
 		})
 	}
+
+	component.on("onLoad",function(){
+		component.addClass("h5_component_" + cfg.type + "Load").removeClass("h5_component_" + cfg.type + "Leave");
+		cfg.animateIn && component.animate(cfg.animateIn);
+		return false;
+	})
+	component.on("onLeave",function(){
+		component.addClass("h5_component_" + cfg.type + "Leave").removeClass("h5_component_" + cfg.type + "Load");
+		cfg.animateOut && component.animate(cfg.animateOut);
+		return false;
+	})
+
 	return component;
 }
 

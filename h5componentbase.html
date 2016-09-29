@@ -8,6 +8,7 @@
 		*{margin: 0;padding: 0;}
 		body{background-color: #000;font-size: 12px;}
 		.phone{width: 340px;height: 540px;background-color: #fff;position: absolute;top: 50%;left: 50%;margin: -270px 0 0 -170px;}
+		.h5component{transition: all .5s;}
 	</style>
 	<link rel="stylesheet" href="css/h5componentbase.css">
 	<script src="js/jquery.js"></script>
@@ -18,18 +19,31 @@
 	<script>
 		var cfg = {
 			type : "base",
-			width : 262,
-			height : 255,
-			bg : "./images/love.jpg",
-			text : "这是一个文本",
+			width : 516,
+			height : 306,
+			bg : "./images/p1_people.png",
+			text : "",
 			css : {
-				left : 50,
-				top : 50
+				bottom: 0,
+				opacity : 0 
 			},
-			center : true
+			center : true,
+			animateIn : {
+				bottom: 80,
+				opacity : 1
+			},
+			animateOut : {
+				bottom: 0,
+				opacity : 0
+			}
 		}
 		var h5 = new H5componentbase("myname",cfg);
 		$(".phone").append(h5);
+		var load = true;
+		$("body").click(function(){
+			load = !load;
+			$(".h5component").trigger(load ? "onLeave" : "onLoad"); 
+		});
 	</script>
 </body>
 </html>
