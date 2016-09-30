@@ -9,11 +9,66 @@
 	<script src="js/jquery-ui.min.js"></script>
 	<script src="js/jquery.fullPage.js"></script>
 	<script src="js/h5componentbase.js"></script>
+	<script src="js/h5.js"></script>
+	<style>
+		body{font-size: 50px;}
+	</style>
 </head>
 <body>
 	<script>
 		$(function(){
-			var h5 = new H5()
+			var h5 = new H5();
+			h5.addPage("face","首页")
+				.addComponent("logo",{
+					text:"logo",
+					width: 800,
+					height: 200,
+					css:{
+						background:"red",
+						top:200,
+						opacity:0
+					},
+					animateIn : {
+						opacity: 1
+					},
+					animateOut:{
+						opacity:0
+					},
+					center: true
+				})
+				.addComponent("slogan",{
+					text:"slogan",
+					width: 800,
+					height: 200,
+					css:{
+						background:"red",
+						top:350
+					},
+					center: true
+				})
+			.addPage("desc","第二页")
+				.addComponent("caption",{
+					text:"核心理念",
+					width: 800,
+					height: 200,
+					css:{
+						background:"green",
+						top:200
+					},
+					center: true
+				})
+			.addPage("page-3","第三页")
+				.addComponent("caption",{
+					text:"课程方向分辨",
+					width: 800,
+					height: 200,
+					css:{
+						background:"blue",
+						top:200
+					},
+					center: true
+				})
+			.loader();
 		})
 	</script>
 </body>
