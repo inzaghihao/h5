@@ -1,0 +1,5 @@
+/*散点图样式*/
+
+
+.point{display: block;border-radius: 50%;text-align: center;background-color: #ccc;position: absolute;}
+

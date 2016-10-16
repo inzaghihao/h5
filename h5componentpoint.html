@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>散点图</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		body{background-color: #000;font-size: 12px;}
+		.phone{width: 340px;height: 540px;background-color: #fff;position: absolute;top: 50%;left: 50%;margin: -270px 0 0 -170px;}
+		.h5component{transition: all .5s;}
+	</style>
+	<link rel="stylesheet" href="css/h5componentbase.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/h5componentbase.js"></script>
+
+	<!-- 引入散点图资源 -->
+	<link rel="stylesheet" href="css/h5componentpoint.css">
+	<script src="js/h5componentpoint.js"></script>
+</head>
+<body>
+	<div class="phone"></div>
+	<script>
+		var cfg = {
+			type : "point",
+			width : 300,
+			height : 300,
+			data : [
+				["A项","0.4","green"],
+				["B项","0.2","yellow",0,"-60%"],
+				["C项","0.2","red",0,"120%"]
+			],
+			text : "",
+			css : {
+				bottom: 0,
+				opacity : 0 
+			},
+			center : true,
+			animateIn : {
+				bottom: "40%",
+				opacity : 1
+			},
+			animateOut : {
+				bottom: 0,
+				opacity : 0
+			}
+		}
+		var h5 = new H5componentpoint("myname",cfg);
+
+
+		$(".phone").append(h5);
+		var load = true;
+		$("body").click(function(){
+			load = !load;
+			$(".h5component").trigger(load ? "onLeave" : "onLoad"); 
+		});
+	</script>
+</body>
+</html>
